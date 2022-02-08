@@ -1,0 +1,31 @@
+.container{
+
+  /*background-color: lightcyan;*/
+
+  padding-top: 25vh;
+  /*background-image: url('https://imageio.forbes.com/blogs-images/josephliu/files/2019/06/5-company-conference-conference-room-1181435-1200x299.jpg?fit=bounds&format=jpg&width=960');*/
+  /*background-image: url('https://images.pexels.com/photos/257897/pexels-photo-257897.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');*/
+  /*background-repeat: no-repeat;*/
+  /*background-attachment: fixed;*/
+  /*background-size: cover;*/
+  /*padding-bottom: 25vh;*/
+}
+.formLogin{
+
+  min-height: 100vh;
+  min-width:100vh;
+  /*background-image: url('https://www.resumeprofessionalwriters.com/rpw2021/wp-content/uploads/2021/07/female-photographer-setting-her-linkedin-background-photo-1024x683.jpg');*/
+  background-image: url('https://cdn.helpsystems.com/styles/crop_general/storage-api-public/hs-how-to-automate-login-to-website-1920x744_0.png?itok=FhcWw1Gn&timestamp=1639052288');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  /*padding-bottom: 25vh;*/
+  position: relative;
+}
+
+form{
+  background: #fff;
+
+
+}
+

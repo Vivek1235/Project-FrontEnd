@@ -1,0 +1,50 @@
+<body>
+<div class="container ">
+
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-4 col-md-4"></div>
+    <div class="col-xs-12 col-sm-4 col-md-4">
+      <div class="list-group-item">
+<h2 class="text-center">Register</h2>
+        <span class="help-block" style="color:red;" >{{message}}</span>
+<form  (ngSubmit)="onSubmit(f)" #f="ngForm" >
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" id="email" class="form-control" placeholder="Email" name="email" ngModel email required #email="ngModel"/>
+      <span class="help-block" style="color:red;" *ngIf="email.invalid && email.touched">Please enter a valid email</span>
+
+  </div>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" class="form-control" placeholder="FirstName" name="firstName" ngModel/>
+
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" class="form-control" placeholder="LastName" name="lastName" ngModel  />
+
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="text" id="password" class="form-control"  placeholder="Password" name="password" [(ngModel)]="password" required #passwordMatch="ngModel"/>
+
+  </div>
+  <div class="form-group">
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" id="confirmPassword" class="form-control" placeholder="ConfirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" #confirmMatch="ngModel" required/>
+    <span class="help-block" style="color:red;" *ngIf="password!==confirmPassword && confirmMatch.touched && passwordMatch.touched">Password did not match</span>
+  </div>
+  <div class="form-group">
+    <button [disabled]="!f.valid" class="btn btn-primary">
+
+      Register
+    </button>
+    <a routerLink="/login" class="btn btn-link">Cancel</a>
+  </div>
+</form>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4"></div>
+  </div>
+</div>
+</body>
