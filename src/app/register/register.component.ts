@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {NavbarService} from "../navbar.service";
+import {NavbarService} from "../service/navbar.service";
 import {Form, NgForm} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {ProfileModel} from "../model/profile.model";
+import {UserRegistrationService} from "../service/user-registration.service";
 
 @Component({
   selector: 'app-register',
@@ -12,9 +14,9 @@ import {Router} from "@angular/router";
 export class RegisterComponent implements OnInit {
   password:String='';
   confirmPassword:String='';
-  user={email:String,firstName:String,lastName:String,password:String};
+  user:ProfileModel=new ProfileModel(0,"","","","","",new Date(),"");
   message:any;
-  constructor(private nav:NavbarService,private http:HttpClient,private router:Router) { }
+  constructor(private nav:NavbarService,private http:HttpClient,private router:Router,private service:UserRegistrationService) { }
 
   ngOnInit(): void {
     this.nav.hide();
@@ -26,8 +28,9 @@ export class RegisterComponent implements OnInit {
       this.user.email=value.email;
       this.user.firstName=value.firstName;
       this.user.lastName=value.lastName;
-      this.user.password=value.password;
-    this.http.post<boolean>("http://localhost:8080/register",this.user).subscribe((data)=>this.router.navigate(['/login']),error => {this.message="User already exists"});
+      this.user.phoneNumber=value.phoneNumber;
+
+    this.service.doRegister(this.user).subscribe((data)=>this.router.navigate(['/login']),error => {this.message="User already exists"});
     form.reset();
   }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NavbarService} from "../navbar.service";
+import {NavbarService} from "../service/navbar.service";
+import {ProfileService} from "../service/profile.service";
+import {ProfileModel} from "../model/profile.model";
 
 @Component({
   selector: 'app-profile',
@@ -7,11 +9,13 @@ import {NavbarService} from "../navbar.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor(private nav:NavbarService) { }
+  public profile=new ProfileModel(0,'','','','',"",new Date(),"");
+  constructor(private nav:NavbarService,private profileService:ProfileService) { }
 
   ngOnInit(): void {
     this.nav.show();
+
+    this.profile=this.profileService.getProfileDetails();
   }
 
 }

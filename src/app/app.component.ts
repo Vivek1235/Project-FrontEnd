@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {userModel} from "./user.model";
+import {userModel} from "./model/user.model";
 import {HttpClient} from "@angular/common/http";
-import {UserRegistrationService} from "./user-registration.service";
-import {skill} from "./skills/skill.model";
+import {UserRegistrationService} from "./service/user-registration.service";
+import {skill} from "./model/skill.model";
 import {Router} from "@angular/router";
 
 
@@ -13,12 +13,11 @@ import {Router} from "@angular/router";
 })
 export class AppComponent implements OnInit{
 
-  //@ViewChild('inputEmail') inputEmail:any;
-  //@ViewChild('inputPassword') inputPassword:any;
+
   allowAccess:boolean =false;
   title = 'project-app';
 
-  user:userModel=new userModel("","");
+  user:userModel=new userModel(0,"","");
   message:any;
   constructor(private service:UserRegistrationService,private router:Router) {
   }
@@ -26,19 +25,5 @@ export class AppComponent implements OnInit{
      this.router.navigate(['login']);
   }
 
-  /* validateUser()
-   {
 
-     if(this.inputEmail.nativeElement.value=="vivek@gmail.com" && this.inputPassword.nativeElement.value=="1234")
-       this.allowAccess=true;
-     else
-       this.allowAccess=false;
-
-
-   }*/
-  // doRegister()
-  // {
-  //   let response=this.service.doRegistration(this.user);
-  //   response.subscribe((data)=>this.message=data);
-  // }
 }

@@ -1,0 +1,25 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-4"></div>
+    <div class="col-xs-12 col-sm-4 col-md-4">
+<form  class="list-group-item" (ngSubmit)="addSkill(f)" #f="ngForm">
+  <span class="help-block" style="color:red;">{{message}}</span>
+  <div class="form-group">
+    <label for="addSkill">Skill Name:</label>
+    <input type="text" class="form-control" id="addSkill"  placeholder="Enter Skill" name="newSkill" ngModel required #skill="ngModel">
+    <span class="help-block" style="color:red;" *ngIf="skill.invalid && skill.touched">Please enter a skill</span>
+  </div>
+  <div class="form-group">
+    <label for="level">Level</label>
+    <input type="number" step="0.1" min="0" max="5" class="form-control" id="level" name="level" ngModel required>
+  </div>
+
+  <button type="submit" [disabled]="!f.valid" class="btn btn-success" >Submit</button>
+  <button type="button" class="btn btn-secondary pull-right" (click)="close()" >Cancel</button>
+
+</form>
+      <div class="col-xs-12 col-sm-4 col-md-4"></div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {NavbarService} from "../navbar.service";
+import {NavbarService} from "../service/navbar.service";
 import {HttpClient} from "@angular/common/http";
-import {UserRegistrationService} from "../user-registration.service";
-import {userModel} from "../user.model";
+import {UserRegistrationService} from "../service/user-registration.service";
+import {userModel} from "../model/user.model";
 
 @Component({
   selector: 'app-header',
@@ -25,6 +25,6 @@ export class HeaderComponent implements OnInit {
   }
   deleteUser()
   {
-    this.service.user=new userModel("","");
+    this.service.user=new userModel(0,"","");
   }
 }
