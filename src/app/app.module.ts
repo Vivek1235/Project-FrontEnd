@@ -15,24 +15,31 @@ import {Router, RouterModule, Routes} from "@angular/router";
 import { RegisterComponent } from './register/register.component';
 import {MatDialogConfig, MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { LogoutComponent } from './logout/logout.component';
 import { SkillsAddComponent } from './skills/skills-add/skills-add.component';
 import { EducationAddComponent } from './education/education-add/education-add.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import { ExperienceAddComponent } from './experience/experience-add/experience-add.component';
 import { SkillsEditComponent } from './skills/skills-edit/skills-edit.component';
+import { ExperienceEditComponent } from './experience/experience-edit/experience-edit.component';
+import { EducationEditComponent } from './education/education-edit/education-edit.component';
 
 const appRoutes:Routes=[
 
   {path:'skills',component:SkillsComponent},
   {path:'skills/addSkill',component:SkillsAddComponent},
-  {path:'skills/updateSkill',component:SkillsEditComponent},
+
+
+  {path:'skills/updateSkill/:id',component:SkillsEditComponent},
+
+
   {path:'profile',component:ProfileComponent},
-  {path:'profile/edit',component:ProfileEditComponent},
+  {path:'profile/update/:id',component:ProfileEditComponent},
   {path:'experience',component:ExperienceComponent},
   {path:'experience/addExperience',component:ExperienceAddComponent},
+  {path:'experience/updateExperience/:id',component:ExperienceEditComponent},
   {path:'education',component:EducationComponent},
   {path:'education/addEducation',component:EducationAddComponent},
+  {path:'education/updateEducation/:id',component:EducationEditComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
 
@@ -47,12 +54,13 @@ const appRoutes:Routes=[
     ExperienceComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent,
     SkillsAddComponent,
     EducationAddComponent,
     ProfileEditComponent,
     ExperienceAddComponent,
     SkillsEditComponent,
+    ExperienceEditComponent,
+    EducationEditComponent,
 
   ],
 

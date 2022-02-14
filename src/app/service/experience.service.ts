@@ -20,13 +20,23 @@ export class ExperienceService {
 
   deleteExperienceById(id:number)
   {
-    return  this.http.delete<ExperienceModel[]>('http://localhost:8080/experience/' + this.userService.user.id+'/'+id);
+    return  this.http.delete<ExperienceModel[]>(`http://localhost:8080/experience/${this.userService.getUser().id}/${id}`);
   }
   addExperience(experienceAdd:ExperienceModel)
   {
 
-    return this.http.post<ExperienceModel>("http://localhost:8080/experience/"+this.userService.user.id,experienceAdd);
+    return this.http.post<ExperienceModel>("http://localhost:8080/experience/"+this.userService.getUser().id,experienceAdd);
 
+
+  }
+  fetchExperienceById(id:number)
+  {
+    return this.http.get<ExperienceModel>('http://localhost:8080/experienceList/experience/'+id);
+  }
+  updateExperienceById(experience:ExperienceModel)
+  {
+    console.log(experience)
+    return  this.http.put<ExperienceModel>('http://localhost:8080/experience/' + this.userService.getUser().id,experience);
 
   }
 

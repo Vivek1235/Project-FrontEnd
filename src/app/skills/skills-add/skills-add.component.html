@@ -4,6 +4,7 @@
     <div class="col-xs-12 col-sm-4 col-md-4"></div>
     <div class="col-xs-12 col-sm-4 col-md-4">
 <form  class="list-group-item" (ngSubmit)="addSkill(f)" #f="ngForm">
+  <h4 class="text-center">Enter Skill</h4>
   <span class="help-block" style="color:red;">{{message}}</span>
   <div class="form-group">
     <label for="addSkill">Skill Name:</label>
@@ -12,8 +13,15 @@
   </div>
   <div class="form-group">
     <label for="level">Level</label>
-    <input type="number" step="0.1" min="0" max="5" class="form-control" id="level" name="level" ngModel required>
+    <select class="form-control"  id="level" name="level" ngModel required>
+      <option value="beginner" style="font-size: medium">Beginner</option>
+      <option value="intermediate" style="font-size: medium">Intermediate</option>
+      <option value="advanced" style="font-size: medium">Advanced</option>
+      <option value="proficient" style="font-size: medium">Proficient</option>
+
+    </select>
   </div>
+
 
   <button type="submit" [disabled]="!f.valid" class="btn btn-success" >Submit</button>
   <button type="button" class="btn btn-secondary pull-right" (click)="close()" >Cancel</button>

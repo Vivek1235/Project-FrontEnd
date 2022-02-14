@@ -29,20 +29,15 @@ export class LoginComponent implements OnInit {
     this.user.email=value.email;
     this.user.password=value.password;
 
-      this.service.doLogin(this.user).subscribe((data:userModel)=>{this.service.user=data;console.log(data);this.router.navigate(['/profile']);},
+      this.service.doLogin(this.user).subscribe((data:userModel)=>{
+          localStorage.setItem('user',JSON.stringify(data));
+       this.router.navigate(['/profile']);},
       error=>{this.message="Invalid Credentials";}
+
     )
 
-    // // console.log(this.userMatch);
-    // this.service.user.id
-    // this.service.user.email=this.user.email;
-    // this.service.user.password=this.user.password;
-    this.service.display();
 
-    // if(this.userMatch==null)
-    // {this.router.navigate(['/profile']);}
-    // else
-    // { this.message="Invalid Credentials";}
+
     form.reset();
 
 

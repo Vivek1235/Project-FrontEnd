@@ -1,8 +1,8 @@
 export class userModel{
   public  id:number;
-  public email:String;
-  public password:String;
-  constructor(id:number,email:String,password:String) {
+  public email:string;
+  public password:string;
+  constructor(id:number,email:string,password:string) {
     this.password=password;
     this.email=email;
     this.id=id;

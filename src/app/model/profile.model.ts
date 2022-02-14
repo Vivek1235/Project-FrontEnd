@@ -1,5 +1,5 @@
 export class ProfileModel
 {
 
-constructor(public id:number,public email:String,public firstName:String,public lastName:String,public imageUrl:String,public phoneNumber:String,public dateOfBirth:Date,public address:String){};
+constructor(public id:number,public email:string,public firstName:string,public lastName:string,public imageUrl:string,public phoneNumber:string,public dateOfBirth:Date,public address:string,public about:string){};
 }

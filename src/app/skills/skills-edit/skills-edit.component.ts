@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {NavbarService} from "../../service/navbar.service";
 import {SkillsService} from "../../service/skills.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {skill} from "../../model/skill.model";
+import {parse} from "@angular/compiler/src/render3/view/style_parser";
 
 @Component({
   selector: 'app-skills-edit',
@@ -12,27 +13,33 @@ import {skill} from "../../model/skill.model";
 })
 export class SkillsEditComponent implements OnInit {
 
-  skill:skill=new skill(0,"",0);
-
+  addSkill:skill=new skill(0,"","");
+   newSkill:any;
   message:any;
-  constructor(private nav:NavbarService,private skillService:SkillsService,private router:Router) { }
+  constructor(private nav:NavbarService,private skillService:SkillsService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.nav.hide();
+
+    this.newSkill = parseInt(<string>this.route.snapshot.paramMap.get('id'));
+    this.skillService.fetchSkillById(this.newSkill).subscribe((data:skill)=>{this.addSkill=data});
   }
+
   updateSkill(form:NgForm)
   {
 
-    this.skill.skillName=form.value.newSkill;
-    this.skill.level=form.value.level;
-    this.skillService.updateSkillById(this.skill).subscribe(data=>{this.message="";
+    this.addSkill.id=this.newSkill;
+    this.addSkill.name=form.value.newSkill;
+    this.addSkill.level=form.value.level;
+    console.log(this.addSkill);
+    this.skillService.updateSkillById(this.addSkill).subscribe(data=>{this.message="",console.log(data);
         this.close();}
       , error=>this.message="skill already exists");
   }
 
   close()
   {
-    this.router.navigate(['/skills']);
+    this.router.navigate(['/profile']);
   }
 
 }

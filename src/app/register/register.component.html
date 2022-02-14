@@ -26,14 +26,14 @@
   </div>
   <div class="form-group">
     <label for="phoneNumber">Phone Number</label>
-    <input type="number" id="phoneNumber" class="form-control"  placeholder="Phone Number" name="phoneNumber"  minlength="10" maxlength="10" ngModel  required #phone="ngModel"/>
+    <input type="text" id="phoneNumber" class="form-control"  placeholder="Phone Number" name="phoneNumber" [minlength]="10" [maxlength]="10" ngModel  required #phone="ngModel"/>
     <span class="help-block" style="color:red;" *ngIf="phone.touched && !phone.valid">Enter a valid phone number</span>
   </div>
 
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" id="password" class="form-control"  placeholder="Password" name="password" [(ngModel)]="password" required #passwordMatch="ngModel"/>
-
+    <input type="password" id="password" class="form-control"  placeholder="Password" name="password" [minlength]="8" [(ngModel)]="password" required #passwordMatch="ngModel"/>
+    <span class="help-block" style="color:red;" *ngIf="passwordMatch.touched && !passwordMatch.valid">password should be atleast 8 characters</span>
   </div>
   <div class="form-group">
     <label for="confirmPassword">Confirm Password</label>

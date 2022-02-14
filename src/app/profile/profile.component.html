@@ -1,60 +1,76 @@
+<div  class="part">
 <div class="container">
 <div class="row">
   <div class="col-xs-12">
 
-
-    <!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlbIDBDhiqs25TJAjMNKQtQpnDGmg-o8WI0f1rcTxVjR7mnJWEla1XMtZ4V8qDaN6J6f4&usqp=CAU" class="img-responsive img-circle" style="width:auto">
--->
     <div class="list-group-item clearfix">
-                                <span class="col-xs-4">
-                                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y2Fyc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                                             class="img-responsive img-rounded" alt="Responsive image">
-                                </span>
+      <section class="section about-section gray-bg" id="about">
 
-      <span class="col-xs-8">
-                                        <p class="pull-right" style="font-size:medium;">Though there is an assortment of
-                                                brand-new
-                                                and
-                                                fully redesigned passenger cars hitting the
-                                                road for 2020 model year, their numbers are dwindling as buyers
-                                                are
-                                                instead choosing
-                                                sport-utility vehicles as their rides of choice. Stalwart sedans
-                                                like
-                                                the Chevrolet
-                                                Impala and Ford Taurus are being discontinued, with the number
-                                                of small
-                                                cars in
-                                                particular thinning rapidly. While there were 26 subcompact
-                                                models on
-                                                the market as
-                                                recently as 2016, they’re down to just 17 for 2019, with the
-                                                Ford Fiesta
-                                                and Chevrolet
-                                                Sonic reportedly bowing out at the end of the current model
-                                                year.
+        <div class="container">
 
-                                                Here’s a look at some of the most prominent introductions
-                                                reaching
-                                                dealers’ showrooms
-                                                for 2020 for those who still aren’t averse to driving a sedan or
-                                                coupe.
-                                                We’ll catch up
-                                                with the hottest new SUVs for the rest of you in a separate
-                                                post.</p>
-                                </span>
+          <div class="row align-items-center flex-row-reverse">
+
+            <div class="col-xs-6">
+              <div class="about-text go-to">
+                <h3 class="dark-color">About Me</h3>
+
+                <p>{{profile.about}}</p>
+                <div class="row about-list">
+                  <div class="col-xs-6">
+                    <div class="media">
+                      <label>Birthday</label>
+                      <p>{{profile.dateOfBirth | date}}</p>
+                    </div>
+
+
+                    <div class="media">
+                      <label>Address</label>
+                      <p>{{profile.address}}</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="media">
+                      <label>E-mail</label>
+                      <p>{{profile.email}}</p>
+                    </div>
+                    <div class="media">
+                      <label>Phone</label>
+                      <p>{{profile.phoneNumber}}</p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+
+              <div class="about-avatar">
+                <img src="{{profile.imageUrl}}" class="img-responsive" style="max-width: 500px;max-height: 500px"title="" alt="">
+              </div>
+              <h3 class="text-center" style="font: bold;color: #20247b;">{{profile.firstName}}  {{profile.lastName}}</h3>
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </section>
+      <button class="btn-success pull-right"  style="width: 100px" (click)="update(profile.id)">Edit</button>
+
     </div>
-    <hr>
-<!--    <p>{{profile.email}}</p>-->
-<!--    <p>{{profile.firstName}}</p>-->
-<!--    <p>{{profile.lastName}}</p>-->
-<!--    <p>{{profile.phoneNumber}}</p>-->
-<!--    <p>{{profile.address}}</p>-->
-<!--    <button type="button" class="btn-primary" >Edit</button>-->
-
-
-
 
   </div>
+
 </div>
+</div>
+</div>
+<div  class="part">
+<app-skills></app-skills>
+</div>
+<div  class="part">
+<app-education class="part"></app-education>
+</div>
+<div  class="part">
+<app-experience class="part"></app-experience>
 </div>

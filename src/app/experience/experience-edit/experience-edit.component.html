@@ -1,0 +1,55 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-4"></div>
+    <div class="col-xs-12 col-sm-4 col-md-4">
+      <form   class="list-group-item" (ngSubmit)="updateExperience(f)" #f="ngForm">
+        <div class="text-center " style="font-size: medium"><b>Enter Experience Details</b></div>
+        <div ngModelGroup="data">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title"  placeholder="Enter Title" name="title" [ngModel]="experience.title" required>
+
+          </div>
+          <div class="form-group">
+
+            <label for="employmentType">Employment Type</label>
+            <select class="form-control" id="employmentType" name="employmentType" [ngModel]="experience.employmentType" required>
+              <option value="fulltime" style="font-size: medium">Full Time</option>
+              <option value="internship" style="font-size: medium;">Internship</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="companyName">Company Name</label>
+            <input type="text" class="form-control" id="companyName"   name="companyName" [ngModel]="experience.companyName" required>
+
+          </div>
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" id="location"   name="location" [ngModel]="experience.location" required>
+
+          </div>
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="Date" class="form-control" id="startDate"  pattern="'yyyy/MM/dd'" name="startDate" [ngModel]="experience.startDate" required>
+
+          </div>
+          <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="Date" class="form-control" id="endDate"   name="endDate" [ngModel]="experience.endDate" required>
+
+          </div>
+        </div>
+
+        <button type="submit"   class="btn btn-success" >Update</button>
+        <button type="button" class="btn btn-secondary pull-right" (click)="close()" >Cancel</button>
+
+      </form>
+      <div class="col-xs-12 col-sm-4 col-md-4"></div>
+    </div>
+  </div>
+</div>
+
+
+

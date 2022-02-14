@@ -16,12 +16,12 @@ import {Router} from "@angular/router";
 export class EducationComponent implements OnInit {
   educationList: EducationModel[] = [];
 
-  constructor(private nav: NavbarService,private router:Router, private educationService: EducationService, private service: UserRegistrationService, private dialog: MatDialog) {
+  constructor(private nav: NavbarService,private router:Router, private educationService:EducationService, private service: UserRegistrationService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.nav.show();
-    this.educationService.getEducationListByUserId(this.service.user.id)
+    this.educationService.getEducationListByUserId(this.service.getUser().id)
       .subscribe((result: EducationModel[]) => {
         this.educationList = result;
         console.log(result)
@@ -35,8 +35,15 @@ export class EducationComponent implements OnInit {
   }
   deleteEducation(id:number) {
 
+
+    console.log(id);
     this.educationService.deleteEducationById(id)
       .subscribe(data=>this.educationList=data,error => console.log(error));
+
+  }
+  updateEducation(id:number)
+  {
+    this.router.navigate(['/education','updateEducation',id]);
 
   }
 }

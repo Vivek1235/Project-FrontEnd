@@ -3,6 +3,7 @@ import {NavbarService} from "../service/navbar.service";
 import {HttpClient} from "@angular/common/http";
 import {UserRegistrationService} from "../service/user-registration.service";
 import {userModel} from "../model/user.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() selectedLink = new EventEmitter<string>();
 
-  constructor(public nav: NavbarService, private http: HttpClient,private service:UserRegistrationService) {
+  constructor(public nav: NavbarService, private http: HttpClient,private service:UserRegistrationService,private router:Router) {
   }
 
   ngOnInit(): void {
@@ -25,6 +26,8 @@ export class HeaderComponent implements OnInit {
   }
   deleteUser()
   {
-    this.service.user=new userModel(0,"","");
+
+    localStorage.clear();
+
   }
 }

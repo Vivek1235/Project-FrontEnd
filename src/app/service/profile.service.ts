@@ -7,13 +7,17 @@ import {ProfileModel} from "../model/profile.model";
   providedIn: 'root'
 })
 export class ProfileService {
-   profile=new ProfileModel(0,"","","","","",new Date(),"");
+   profile=new ProfileModel(0,"","","","","",new Date(),"",'');
 
   constructor(private http:HttpClient,private userService:UserRegistrationService) { }
 
   getProfileDetails()
   {
-    this.http.get<ProfileModel>('http://localhost:8080/profile/'+this.userService.user.id).subscribe((result:ProfileModel)=>{this.profile=result;console.log(result);});
-    return this.profile;
+    return this.http.get<ProfileModel>('http://localhost:8080/profile/'+this.userService.getUser().id)
+
+  }
+  updateProfile(profile:ProfileModel)
+  {
+    return this.http.put<ProfileModel>('http://localhost:8080/profile/'+this.userService.getUser().id,profile)
   }
 }

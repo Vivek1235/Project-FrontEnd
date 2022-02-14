@@ -3,6 +3,7 @@ import {ExperienceModel} from "../model/experience.model";
 import {HttpClient} from "@angular/common/http";
 import {UserRegistrationService} from "./user-registration.service";
 import {EducationModel} from "../model/education.model";
+import {skill} from "../model/skill.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,22 @@ export class EducationService {
 
   deleteEducationById(id:number)
   {
-    return  this.http.delete<EducationModel[]>('http://localhost:8080/education/' + this.userService.user.id+'/'+id);
+    return  this.http.delete<EducationModel[]>(`http://localhost:8080/education/${this.userService.getUser().id}/${id}`);
   }
   addEducation(educationAdd:EducationModel)
   {
 
-    return this.http.post<EducationModel>("http://localhost:8080/experience/"+this.userService.user.id,educationAdd);
+    return this.http.post<EducationModel>("http://localhost:8080/education/"+this.userService.getUser().id,educationAdd);
 
+
+  }
+  fetchEducationById(id:number)
+  {
+    return this.http.get<EducationModel>('http://localhost:8080/educationList/education/'+id);
+  }
+  updateEducationById(education:EducationModel)
+  {
+    return  this.http.put<EducationModel>('http://localhost:8080/education/' + this.userService.getUser().id,education);
 
   }
 }

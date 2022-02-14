@@ -2,6 +2,7 @@
 
   <div class="row">
     <div class="col-xs-12">
+        <section class="section about-section gray-bg">
       <div class="list-group-item clearfix active">
 
         <h3 class="list-group-item-text">Education
@@ -15,12 +16,15 @@
           <div><h4 style="font-family: Arial, Helvetica, sans-serif;" class="list-group-item-text">{{education.degreeName}}</h4>grade:{{education.grade }}</div>
           <p>{{education.startDate | date}}-{{education.endDate | date}}</p>
           <p>{{education.descript}}</p>
+
         </div>
-        <div class="list-group-item-text"><button class="btn btn-danger pull-right"  (click)="deleteEducation(education.id)">Delete</button></div>
+
+        <div class="list-group-item-text"><button class="btn btn-danger pull-right"  style="margin:5px;" (click)="deleteEducation(education.id)">Delete</button></div>
+        <button class="btn btn-success pull-right" style="margin:5px;"  (click)="updateEducation(education.id)">Update</button>&nbsp;
 
 
       </div>
-
+        </section>
 
     </div>
   </div>

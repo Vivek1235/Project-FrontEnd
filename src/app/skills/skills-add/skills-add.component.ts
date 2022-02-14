@@ -13,25 +13,26 @@ import {NavbarService} from "../../service/navbar.service";
 })
 export class SkillsAddComponent implements OnInit {
   @Output('skillAdded') newSkill=new EventEmitter<skill>();
-  skill:skill=new skill(0,"",0);
+  skill:skill=new skill(0,"","");
 
   message:any;
   constructor(private nav:NavbarService,private skillService:SkillsService,private router:Router) { }
 
   ngOnInit(): void {
+
   }
   addSkill(form:NgForm)
   {
-    this.skill.skillName=form.value.newSkill;
+    this.skill.name=form.value.newSkill;
     this.skill.level=form.value.level;
     this.skillService.addSkill(this.skill).subscribe(data=>{this.message="";this.newSkill.emit(data);
-      this.close();}
+      this.close(); alert("skill addded")}
       , error=>this.message="skill already exists");
   }
 
   close()
   {
-    this.router.navigate(['/skills']);
+    this.router.navigate(['/profile']);
   }
 
 

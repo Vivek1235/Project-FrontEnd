@@ -17,21 +17,18 @@ export class SkillsComponent implements OnInit{
 
   skills:skill[]=[];
   message:any;
-  constructor(private nav:NavbarService,private router:Router,private dialog:MatDialog,private http:HttpClient,private service:UserRegistrationService,private skillService:SkillsService){
+  constructor(private nav:NavbarService,private router:Router,private http:HttpClient,private service:UserRegistrationService,private skillService:SkillsService){
 
   }
 
   ngOnInit(): void {
     this.nav.show();
-    this.skillService.getSkillsByUserId(this.service.user.id)
+    this.skillService.getSkillsByUserId(this.service.getUser().id)
       .subscribe((result:skill[])=>{this.skills=result;console.log(result)},error => {this.skills=[];});
     }
 
 
-  ngOnViewInit()
-  {
 
-  }
   addSkill()
   {
 
@@ -43,9 +40,9 @@ export class SkillsComponent implements OnInit{
       .subscribe((data)=>{this.skills=data},
           error => {console.log(error)});
   }
-  updateSkill(updateSkill:skill)
+  updateSkill(skillId:number)
   {
-    this.router.navigate(['/skills','updateSkill']);
+    this.router.navigate(['/skills','updateSkill',skillId]);
   }
 
 }

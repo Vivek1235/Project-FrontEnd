@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
   constructor(private service:UserRegistrationService,private router:Router) {
   }
   ngOnInit() {
-     this.router.navigate(['login']);
+     // this.router.navigate(['login']);
   }
 
 

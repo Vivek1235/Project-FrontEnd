@@ -24,6 +24,6 @@ export class ExperienceAddComponent implements OnInit {
   }
   close()
   {
-    this.router.navigate(['/experience']);
+    this.router.navigate(['/profile']);
   }
 }

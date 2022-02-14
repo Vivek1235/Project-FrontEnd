@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html">
 
   <div class="row">
     <div class="col-xs-12">
+      <section class="section about-section gray-bg">
       <div class="list-group-item clearfix active">
 
         <h3 class="list-group-item-text">Skills
@@ -11,22 +12,24 @@
        <hr>
       <div class="list-group-item clearfix " *ngFor="let skill of skills">
         <div class="pull-left">
-          <h3 class="list-group-item-heading" style="font-family: bold">{{skill.skillName }}</h3>
-          <p style="font-family: Arial, Helvetica, sans-serif;" class="list-group-item-text">Level:{{skill.level}}</p>
+          <h3 class="list-group-item-heading" style="font-family: bold">{{skill.name | uppercase}}</h3>
+          <p style="font-style: italic" class="list-group-item-text">Level: {{skill.level | titlecase}}</p>
 
         </div>
         <div>
-        <button class="btn btn-success pull-right"  (click)="updateSkill(skill)">Update</button>&nbsp;&nbsp;
+        &nbsp;&nbsp;
 
-        <button class="btn btn-danger pull-right"  (click)="deleteSkill(skill.id)">Delete</button>
+        <button class="btn btn-danger pull-right"  style="margin:5px;" (click)="deleteSkill(skill.id)">Delete</button>
+          <button class="btn btn-success pull-right"  style="margin:5px;" (click)="updateSkill(skill.id)">Update</button>
         </div>
-
 
       </div>
 
-     <span style="color:red;">{{message}}</span>
 
+     <span style="color:red;">{{message}}</span>
+        </section>
+      </div>
 
     </div>
-  </div>
-</div>
+    </div>
+

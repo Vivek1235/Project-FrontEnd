@@ -8,6 +8,7 @@ import {SkillsAddComponent} from "../skills/skills-add/skills-add.component";
 import {ExperienceAddComponent} from "./experience-add/experience-add.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
+import {EducationModel} from "../model/education.model";
 
 @Component({
   selector: 'app-experience',
@@ -22,7 +23,7 @@ export class ExperienceComponent implements OnInit {
 
   ngOnInit(): void {
     this.nav.show();
-    this.experienceService.getExperiencesById(this.service.user.id)
+    this.experienceService.getExperiencesById(this.service.getUser().id)
       .subscribe((result: ExperienceModel[]) => {
         this.experiences = result;
         console.log(result)
@@ -39,5 +40,9 @@ export class ExperienceComponent implements OnInit {
      this.experienceService.deleteExperienceById(id)
        .subscribe(data=>this.experiences=data,error => console.log(error));
 
+  }
+  updateEducation(id:number)
+  {
+    this.router.navigate(['/experience','updateExperience',id]);
   }
 }

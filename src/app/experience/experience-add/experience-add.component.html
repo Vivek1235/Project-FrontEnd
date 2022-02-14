@@ -15,8 +15,8 @@
 
           <label for="employmentType">Employment Type</label>
           <select class="form-control" id="employmentType" name="employmentType" ngModel required>
-            <option value="fulltime">Full Time</option>
-            <option value="internship">Internship</option>
+            <option value="fulltime" style="font-size: medium">Full Time</option>
+            <option value="internship" style="font-size: medium">Internship</option>
 
           </select>
         </div>
@@ -42,7 +42,7 @@
         </div>
         </div>
 
-        <button type="submit" [disabled]="!f.valid" class="btn btn-success" >Submit</button>
+        <button type="submit" [disabled]="!f.valid" class="btn btn-success" >Add</button>
         <button type="button" class="btn btn-secondary pull-right" (click)="close()" >Cancel</button>
 
       </form>

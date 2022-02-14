@@ -27,7 +27,7 @@ export class EducationAddComponent implements OnInit {
   }
   close()
   {
-    this.router.navigate(['/education']);
+    this.router.navigate(['/profile']);
   }
 
 }
