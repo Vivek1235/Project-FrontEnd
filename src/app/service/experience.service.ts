@@ -1,5 +1,4 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {skill} from "../model/skill.model";
 import {HttpClient} from "@angular/common/http";
 import {UserRegistrationService} from "./user-registration.service";
 import {ExperienceModel} from "../model/experience.model";
@@ -35,7 +34,6 @@ export class ExperienceService {
   }
   updateExperienceById(experience:ExperienceModel)
   {
-    console.log(experience)
     return  this.http.put<ExperienceModel>('http://localhost:8080/experience/' + this.userService.getUser().id,experience);
 
   }

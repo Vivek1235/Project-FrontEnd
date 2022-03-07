@@ -1,4 +1,4 @@
-export class skill{
+export class skillModel{
   public id:number;
   public name:string;
   public level:string;

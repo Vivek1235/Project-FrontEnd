@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {skill} from "../model/skill.model";
+import {skillModel} from "../model/skill.model";
 import {HttpClient} from "@angular/common/http";
 import {UserRegistrationService} from "./user-registration.service";
 import {JsonPipe} from "@angular/common";
@@ -8,22 +8,22 @@ import {JsonPipe} from "@angular/common";
   providedIn: 'root'
 })
 export class SkillsService {
-  @Output() skillsChanged=new EventEmitter<skill[]>();
-  skills:skill[]=[];
+  @Output() skillsChanged=new EventEmitter<skillModel[]>();
+  skills:skillModel[]=[];
   message:any;
   constructor(private http:HttpClient,private userService:UserRegistrationService) { }
   getSkills()
   {
     return this.skills;
   }
-  addSkill(skillAdd:skill)
+  addSkill(skillAdd:skillModel)
   {
 
-    return this.http.post<skill>("http://localhost:8080/skills/"+this.userService.getUser().id,skillAdd);
+    return this.http.post<skillModel>("http://localhost:8080/skills/"+this.userService.getUser().id,skillAdd);
 
 
   }
-  addSkills(skills:skill[])
+  addSkills(skills:skillModel[])
   {
 
     this.skills.push(...skills);
@@ -33,24 +33,24 @@ export class SkillsService {
 
   getSkillsByUserId(userId:number)
   {
-    return this.http.get<skill[]>('http://localhost:8080/skills/'+userId);
+    return this.http.get<skillModel[]>('http://localhost:8080/skills/'+userId);
   }
 
 
 
   deleteSkillById(id:number)
   {
-   return  this.http.delete<skill[]>('http://localhost:8080/skills/' + this.userService.getUser().id+'/'+id);
+   return  this.http.delete<skillModel[]>('http://localhost:8080/skills/' + this.userService.getUser().id+'/'+id);
   }
-  updateSkillById(updateSkill:skill)
+  updateSkillById(updateSkill:skillModel)
   {
     console.log(updateSkill)
-    return  this.http.put<skill>('http://localhost:8080/skills/' + this.userService.getUser().id,updateSkill);
+    return  this.http.put<skillModel>('http://localhost:8080/skills/' + this.userService.getUser().id,updateSkill);
 
   }
   fetchSkillById(id:number)
   {
-    return this.http.get<skill>('http://localhost:8080/skills/skill/'+id);
+    return this.http.get<skillModel>('http://localhost:8080/skills/skill/'+id);
   }
 
 }

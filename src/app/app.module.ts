@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {skill} from './model/skill.model';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -8,7 +7,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { EducationComponent } from './education/education.component';
 import { ExperienceComponent } from './experience/experience.component';
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserRegistrationService} from "./service/user-registration.service";
 import { LoginComponent } from './login/login.component';
 import {Router, RouterModule, Routes} from "@angular/router";
@@ -71,6 +70,7 @@ const appRoutes:Routes=[
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     MatDialogModule,
+    ReactiveFormsModule,
   ],
   providers: [UserRegistrationService],
   bootstrap: [AppComponent],

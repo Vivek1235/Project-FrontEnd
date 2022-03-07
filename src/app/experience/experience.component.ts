@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {NavbarService} from "../service/navbar.service";
-import {skill} from "../model/skill.model";
 import {ExperienceService} from "../service/experience.service";
 import {UserRegistrationService} from "../service/user-registration.service";
 import {ExperienceModel} from "../model/experience.model";

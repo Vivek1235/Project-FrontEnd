@@ -3,56 +3,56 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-md-4"></div>
     <div class="col-xs-12 col-sm-4 col-md-4">
-      <form   class="list-group-item" (ngSubmit)="updateProfile(f)" #f="ngForm">
+      <form   class="list-group-item" [formGroup]="profileEditForm" (ngSubmit)="updateProfile()" >
         <div class="text-center " style="font-size: medium"><b>Enter Details</b></div>
-        <div ngModelGroup="data">
-          <div class="form-group">
+        <div formGroupName="data">
 
+          <div class="form-group">
             <label for="email">Email</label>
-            <input type="" class="form-control" id="email" name="email" [ngModel]="profile.email" email required #email="ngModel">
-            <span class="help-block" style="color:red;" *ngIf="email.touched && !email.valid">Enter a valid email</span>
-
+            <input type="" class="form-control" id="email" formControlName="email" >
+            <span class="help-block" style="color:red;" *ngIf="profileEditForm.get('data.email')!.touched && !profileEditForm.get('data.email')!.valid ">Enter a valid email</span>
           </div>
+
+
           <div class="form-group">
-
             <label for="firstname">First Name</label>
-            <input type="text" class="form-control" id="firstname" name="firstName" [ngModel]="profile.firstName" required>
-
-
+            <input type="text" class="form-control" id="firstname" formControlName="firstName" >
+            <span class="help-block" style="color:red;" *ngIf="!profileEditForm.get('data.firstName')!.valid">first name is required</span>
           </div>
           <div class="form-group">
             <label for="lastname">Last Name</label>
-            <input type="text" class="form-control" id="lastname"   name="lastName" [ngModel]="profile.lastName" required>
+            <input type="text" class="form-control" id="lastname"   formControlName="lastName">
+            <span class="help-block" style="color:red;" *ngIf="!profileEditForm.get('data.lastName')!.valid">last name is required</span>
 
           </div>
           <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="text" class="form-control" id="phone"  [minlength]="10" [maxlength]="10" name="phoneNumber" [ngModel]="profile.phoneNumber" required #phone="ngModel">
-            <span class="help-block" style="color:red;" *ngIf="phone.touched && !phone.valid">Enter a valid phone number</span>
+            <input type="text" class="form-control" id="phone"  [minlength]="10" [maxlength]="10" formControlName="phoneNumber" >
+            <span class="help-block" style="color:red;" *ngIf="!profileEditForm.get('data.phoneNumber')!.valid">Enter a valid phone number</span>
           </div>
           <div class="form-group">
             <label for="dateOfBirth">Date of Birth </label>
-            <input type="Date" class="form-control" id="dateOfBirth"  pattern="'yyyy/MM/dd'" name="dateOfBirth" [ngModel]="profile.dateOfBirth" >
+            <input type="Date" class="form-control" id="dateOfBirth"  formControlName="dateOfBirth" >
           </div>
           <div class="form-group">
             <label for="about">About</label>
-            <input type="text" class="form-control" id="about"    name="about" [ngModel]="profile.about" >
+            <input type="text" class="form-control" id="about"    formControlName="about" >
 
           </div>
           <div class="form-group">
             <label for="address">Address</label>
-            <input type="text" class="form-control" id="address"    name="address" [ngModel]="profile.address" >
+            <input type="text" class="form-control" id="address"    formControlName="address" >
 
           </div>
           <div class="form-group">
             <label for="image">Image Url</label>
-            <input type="text" class="form-control" id="image"    name="imageUrl" [ngModel]="profile.imageUrl" >
+            <input type="text" class="form-control" id="image" formControlName="imageUrl">
 
           </div>
 
         </div>
 
-        <button type="submit"   class="btn btn-success" >Update</button>
+        <button type="submit"   [disabled]="!profileEditForm.valid" class="btn btn-success" >Update</button>
         <button type="button" class="btn btn-secondary pull-right" (click)="close()" >Cancel</button>
 
       </form>

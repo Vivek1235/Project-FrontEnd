@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {ExperienceModel} from "../../model/experience.model";
 import {ExperienceService} from "../../service/experience.service";
-import {NgForm} from "@angular/forms";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {EducationModel} from "../../model/education.model";
 import {EducationService} from "../../service/education.service";
 
@@ -14,13 +14,25 @@ import {EducationService} from "../../service/education.service";
 export class EducationAddComponent implements OnInit {
 
   education:EducationModel=new EducationModel(0,"","",0,"",new Date(),new Date());
+  // @ts-ignore
+  educationAddForm: FormGroup;
   constructor(private router:Router,private educationService:EducationService) { }
 
   ngOnInit(): void {
+    this.educationAddForm=new FormGroup({
+      'data':new FormGroup({
+        'schoolName': new FormControl(null, Validators.required),
+        'degreeName': new FormControl(null, Validators.required),
+        'grade': new FormControl(null, Validators.required),
+        'startDate': new FormControl(null, Validators.required),
+        'endDate': new FormControl(null, Validators.required),
+        'descript': new FormControl(null)
+      })
+    })
   }
-  addEducation(form:NgForm)
+  addEducation()
   {
-    console.log(form);
+    const form=this.educationAddForm;
     this.education=form.value.data;
     console.log(this.education);
     this.educationService.addEducation(this.education).subscribe((data:EducationModel)=>{console.log(data);this.close()},error=>{});

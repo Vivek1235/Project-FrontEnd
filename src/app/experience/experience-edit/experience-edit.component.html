@@ -3,46 +3,65 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-md-4"></div>
     <div class="col-xs-12 col-sm-4 col-md-4">
-      <form   class="list-group-item" (ngSubmit)="updateExperience(f)" #f="ngForm">
+      <form   class="list-group-item" [formGroup]="experienceEditForm" (ngSubmit)="updateExperience()" >
         <div class="text-center " style="font-size: medium"><b>Enter Experience Details</b></div>
-        <div ngModelGroup="data">
+        <div formGroupName="data">
           <div class="form-group">
             <label for="title">Title:</label>
-            <input type="text" class="form-control" id="title"  placeholder="Enter Title" name="title" [ngModel]="experience.title" required>
+            <input type="text" class="form-control"
+                   id="title"  placeholder="Enter Title"
+                   formControlName="title" >
+            <span class="help-block" style="color:red;" *ngIf="!experienceEditForm.get('data.title')!.valid">enter title</span>
 
           </div>
-          <div class="form-group">
 
+          <div class="form-group">
             <label for="employmentType">Employment Type</label>
-            <select class="form-control" id="employmentType" name="employmentType" [ngModel]="experience.employmentType" required>
+            <select class="form-control" id="employmentType" formControlName="employmentType" >
               <option value="fulltime" style="font-size: medium">Full Time</option>
               <option value="internship" style="font-size: medium;">Internship</option>
-
             </select>
+            <span class="help-block" style="color:red;" *ngIf="!experienceEditForm.get('data.employmentType')!.valid">select employment type</span>
+
           </div>
+
+
           <div class="form-group">
             <label for="companyName">Company Name</label>
-            <input type="text" class="form-control" id="companyName"   name="companyName" [ngModel]="experience.companyName" required>
+            <input type="text" class="form-control"
+                   id="companyName"  formControlName="companyName" >
+            <span class="help-block" style="color:red;" *ngIf="!experienceEditForm.get('data.companyName')!.valid">enter company name</span>
 
           </div>
+
+
           <div class="form-group">
             <label for="location">Location</label>
-            <input type="text" class="form-control" id="location"   name="location" [ngModel]="experience.location" required>
+            <input type="text" class="form-control"
+                   id="location"   formControlName="location" >
+            <span class="help-block" style="color:red;" *ngIf="!experienceEditForm.get('data.location')!.valid">enter location</span>
 
           </div>
+
+
           <div class="form-group">
             <label for="startDate">Start Date</label>
-            <input type="Date" class="form-control" id="startDate"  pattern="'yyyy/MM/dd'" name="startDate" [ngModel]="experience.startDate" required>
-
+            <input type="Date" class="form-control"
+                   id="startDate"
+                   formControlName="startDate">
           </div>
+
+
           <div class="form-group">
             <label for="endDate">End Date</label>
-            <input type="Date" class="form-control" id="endDate"   name="endDate" [ngModel]="experience.endDate" required>
-
+            <input type="Date" class="form-control"
+                   id="endDate"   formControlName="endDate">
           </div>
+
+
         </div>
 
-        <button type="submit"   class="btn btn-success" >Update</button>
+        <button type="submit"  [disabled]="!experienceEditForm.valid" class="btn btn-success" >Update</button>
         <button type="button" class="btn btn-secondary pull-right" (click)="close()" >Cancel</button>
 
       </form>

@@ -1,8 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {userModel} from "./model/user.model";
-import {HttpClient} from "@angular/common/http";
 import {UserRegistrationService} from "./service/user-registration.service";
-import {skill} from "./model/skill.model";
 import {Router} from "@angular/router";
 
 

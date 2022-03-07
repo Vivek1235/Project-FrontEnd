@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {NavbarService} from "../../service/navbar.service";
 import {SkillsService} from "../../service/skills.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {NgForm} from "@angular/forms";
-import {skill} from "../../model/skill.model";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {skillModel} from "../../model/skill.model";
 import {parse} from "@angular/compiler/src/render3/view/style_parser";
 
 @Component({
@@ -13,21 +13,36 @@ import {parse} from "@angular/compiler/src/render3/view/style_parser";
 })
 export class SkillsEditComponent implements OnInit {
 
-  addSkill:skill=new skill(0,"","");
+  addSkill:skillModel=new skillModel(0,"","");
    newSkill:any;
   message:any;
+  // @ts-ignore
+  skillsEditForm:FormGroup;
   constructor(private nav:NavbarService,private skillService:SkillsService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.nav.hide();
 
     this.newSkill = parseInt(<string>this.route.snapshot.paramMap.get('id'));
-    this.skillService.fetchSkillById(this.newSkill).subscribe((data:skill)=>{this.addSkill=data});
+    this.skillService.fetchSkillById(this.newSkill).subscribe((data:skillModel)=>{this.addSkill=data;
+      this.skillsEditForm.setValue(
+        {
+          'newSkill':this.addSkill.name,
+          'level':this.addSkill.level
+        }
+      )});
+    console.log(this.addSkill);
+    this.skillsEditForm= new FormGroup({
+      'newSkill':new FormControl(this.addSkill.name,Validators.required),
+      'level':new FormControl(this.addSkill.level,Validators.required)
+    });
+
+
   }
 
-  updateSkill(form:NgForm)
+  updateSkill()
   {
-
+    const form=this.skillsEditForm;
     this.addSkill.id=this.newSkill;
     this.addSkill.name=form.value.newSkill;
     this.addSkill.level=form.value.level;

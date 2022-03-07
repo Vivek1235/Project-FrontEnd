@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {skill} from '../model/skill.model';
+import {skillModel} from '../model/skill.model';
 import {NavbarService} from "../service/navbar.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
@@ -15,16 +15,16 @@ import {Router} from "@angular/router";
 })
 export class SkillsComponent implements OnInit{
 
-  skills:skill[]=[];
+  skills:skillModel[]=[];
   message:any;
-  constructor(private nav:NavbarService,private router:Router,private http:HttpClient,private service:UserRegistrationService,private skillService:SkillsService){
-
-  }
+  constructor(private nav:NavbarService,private router:Router,
+              private http:HttpClient,private service:UserRegistrationService,
+              private skillService:SkillsService){}
 
   ngOnInit(): void {
     this.nav.show();
     this.skillService.getSkillsByUserId(this.service.getUser().id)
-      .subscribe((result:skill[])=>{this.skills=result;console.log(result)},error => {this.skills=[];});
+      .subscribe((result:skillModel[])=>{this.skills=result;console.log(result)},error => {this.skills=[];});
     }
 
 

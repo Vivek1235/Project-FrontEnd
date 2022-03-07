@@ -3,43 +3,59 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-md-4"></div>
     <div class="col-xs-12 col-sm-4 col-md-4">
-      <form  class="list-group-item" (ngSubmit)="updateEducation(f)" #f="ngForm">
+      <form  class="list-group-item" [formGroup]="educationEditForm" (ngSubmit)="updateEducation()">
         <div class="text-center " style="font-size: medium"><b>Enter Education Details</b></div>
-        <div ngModelGroup="data" >
+        <div formGroupName="data">
           <div class="form-group">
             <label for="school">School Name:</label>
-            <input type="text" class="form-control" id="school"  placeholder="Enter School" name="schoolName" [ngModel]="education.schoolName" required>
+            <input type="text"
+                   class="form-control" id="school"
+                   placeholder="Enter School"
+            formControlName="schoolName">
+            <span class="help-block" style="color:red;" *ngIf="!educationEditForm.get('data.schoolName')!.valid">enter institution name</span>
 
           </div>
+
+
           <div class="form-group">
             <label for="degree">Degree</label>
-            <input type="text" class="form-control" id="degree"   name="degreeName" [ngModel]="education.degreeName" required>
-
+            <input type="text"
+                   class="form-control"
+                   id="degree"   formControlName="degreeName">
+            <span class="help-block" style="color:red;" *ngIf="!educationEditForm.get('data.degreeName')!.valid">enter degree name</span>
           </div>
+
+
           <div class="form-group">
             <label for="grade">Grade</label>
-            <input type="number" step="0.1" min="0" max="5" class="form-control" id="grade" name="grade" [ngModel]="education.grade" required>
+            <input type="number"
+                   step="0.1" min="0" max="10"
+                   class="form-control" id="grade"
+                   formControlName="grade" >
+            <span class="help-block" style="color:red;" *ngIf="!educationEditForm.get('data.grade')!.valid">enter grade</span>
           </div>
 
 
           <div class="form-group">
             <label for="startDate">Start Date</label>
-            <input type="Date" class="form-control" id="startDate"   name="startDate" [ngModel]="education.startDate" required>
+            <input type="Date" class="form-control" id="startDate"   formControlName="startDate" >
 
           </div>
+
+
           <div class="form-group">
             <label for="endDate">End Date</label>
-            <input type="Date" class="form-control" id="endDate"   name="endDate" [ngModel]="education.endDate" required>
+            <input type="Date" class="form-control" id="endDate"   formControlName="endDate" >
 
           </div>
 
           <div class="form-group">
             <label for="description">Description</label>
-            <input type="text" class="form-control" id="description"   name="descript" [ngModel]="education.descript">
-
+            <input type="text" class="form-control" id="description" formControlName="descript">
           </div>
+
         </div>
-        <button type="submit"   [disabled]="f.form.invalid && (f.dirty || f.touched)" class="btn btn-success" >Update</button>
+        <button type="submit"  [disabled]="!educationEditForm.valid" class="btn btn-success" >Update</button>
         <button type="button" class="btn btn-secondary pull-right" (click)="close()" >Cancel</button>
 
       </form>
