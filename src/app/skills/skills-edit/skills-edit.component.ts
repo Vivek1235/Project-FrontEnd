@@ -4,7 +4,6 @@ import {SkillsService} from "../../service/skills.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {skillModel} from "../../model/skill.model";
-import {parse} from "@angular/compiler/src/render3/view/style_parser";
 
 @Component({
   selector: 'app-skills-edit',

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import {ExperienceModel} from "../model/experience.model";
 import {HttpClient} from "@angular/common/http";
 import {UserRegistrationService} from "./user-registration.service";
 import {EducationModel} from "../model/education.model";
-import {skillModel} from "../model/skill.model";
 
 @Injectable({
   providedIn: 'root'

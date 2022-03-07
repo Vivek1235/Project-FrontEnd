@@ -1,6 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SkillsService} from "../../service/skills.service";
-import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {skillModel} from "../../model/skill.model";
 import {Router} from "@angular/router";
 import {NavbarService} from "../../service/navbar.service";

@@ -7,12 +7,12 @@ import { SkillsComponent } from './skills/skills.component';
 import { EducationComponent } from './education/education.component';
 import { ExperienceComponent } from './experience/experience.component';
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule} from "@angular/forms";
 import {UserRegistrationService} from "./service/user-registration.service";
 import { LoginComponent } from './login/login.component';
-import {Router, RouterModule, Routes} from "@angular/router";
+import { RouterModule, Routes} from "@angular/router";
 import { RegisterComponent } from './register/register.component';
-import {MatDialogConfig, MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SkillsAddComponent } from './skills/skills-add/skills-add.component';
 import { EducationAddComponent } from './education/education-add/education-add.component';
@@ -66,7 +66,6 @@ const appRoutes:Routes=[
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     MatDialogModule,

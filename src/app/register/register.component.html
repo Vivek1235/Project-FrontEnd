@@ -7,46 +7,65 @@
       <div class="list-group-item">
 <h2 class="text-center">Register</h2>
         <span class="help-block" style="color:red;" >{{message}}</span>
-<form  (ngSubmit)="onSubmit(f)" #f="ngForm" >
+<form  [formGroup]="registerForm" (ngSubmit)="onSubmit()"  >
+
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="text" id="email" class="form-control" placeholder="Email" name="email" ngModel email required #email="ngModel"/>
-      <span class="help-block" style="color:red;" *ngIf="email.invalid && email.touched">Please enter a valid email</span>
-
+    <input type="text" id="email" class="form-control" placeholder="Email" formControlName="email"/>
+      <span class="help-block" style="color:red;" *ngIf="registerForm.get('email')!.invalid && registerForm.get('email')!.touched">Please enter a valid email</span>
   </div>
+
+
   <div class="form-group">
     <label for="firstName">First Name</label>
-    <input type="text" id="firstName" class="form-control" placeholder="FirstName" name="firstName" ngModel/>
-
+    <input type="text" id="firstName" class="form-control" placeholder="FirstName" formControlName="firstName" />
   </div>
+
+
   <div class="form-group">
     <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" class="form-control" placeholder="LastName" name="lastName" ngModel  />
-
+    <input type="text" id="lastName" class="form-control" placeholder="LastName" formControlName="lastName" />
   </div>
+
+
   <div class="form-group">
     <label for="phoneNumber">Phone Number</label>
-    <input type="text" id="phoneNumber" class="form-control"  placeholder="Phone Number" name="phoneNumber" [minlength]="10" [maxlength]="10" ngModel  required #phone="ngModel"/>
-    <span class="help-block" style="color:red;" *ngIf="phone.touched && !phone.valid">Enter a valid phone number</span>
+    <input type="text" id="phoneNumber" class="form-control"  placeholder="Phone Number"
+           formControlName="phoneNumber" [minlength]="10" [maxlength]="10" />
+    <span class="help-block" style="color:red;" *ngIf="registerForm.get('phoneNumber')!.touched && !registerForm.get('phoneNumber')!.valid">Enter a valid phone number</span>
   </div>
+
 
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" id="password" class="form-control"  placeholder="Password" name="password" [minlength]="8" [(ngModel)]="password" required #passwordMatch="ngModel"/>
-    <span class="help-block" style="color:red;" *ngIf="passwordMatch.touched && !passwordMatch.valid">password should be atleast 8 characters</span>
+    <input type="password" id="password" class="form-control"  placeholder="Password"
+           formControlName="password"  [minlength]="8" />
+    <span class="help-block" style="color:red;" *ngIf="registerForm.get('password')!.touched && !registerForm.get('password')!.valid">
+      password should be atleast 8 characters</span>
   </div>
+
+
   <div class="form-group">
     <label for="confirmPassword">Confirm Password</label>
-    <input type="password" id="confirmPassword" class="form-control" placeholder="ConfirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" #confirmMatch="ngModel" required/>
-    <span class="help-block" style="color:red;" *ngIf="password!==confirmPassword && confirmMatch.touched && passwordMatch.touched">Password did not match</span>
-  </div>
-  <div class="form-group">
-    <button [disabled]="!f.valid" class="btn btn-primary">
 
+    <input type="password" id="confirmPassword" class="form-control"
+           placeholder="ConfirmPassword" formControlName="confirmPassword" />
+
+    <span class="help-block" style="color:red;"
+          *ngIf="registerForm.get('password')!.value!==registerForm.get('confirmPassword')!.value &&
+          (registerForm.get('password')!.touched && registerForm.get('confirmPassword')!.touched)">
+      Password did not match</span>
+  </div>
+
+
+  <div class="form-group">
+    <button [disabled]="!registerForm.valid" class="btn btn-primary">
       Register
     </button>
     <a routerLink="/login" class="btn btn-link">Cancel</a>
   </div>
+
+
 </form>
       </div>
     </div>

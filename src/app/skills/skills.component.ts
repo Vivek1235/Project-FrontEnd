@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {skillModel} from '../model/skill.model';
 import {NavbarService} from "../service/navbar.service";
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
 import {UserRegistrationService} from "../service/user-registration.service";
 
-import {SkillsAddComponent} from "./skills-add/skills-add.component";
 import {SkillsService} from "../service/skills.service";
 import {Router} from "@angular/router";
 @Component({

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
-import {Form, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators} from "@angular/forms";
 import {ExperienceModel} from "../../model/experience.model";
 import {ExperienceService} from "../../service/experience.service";
 

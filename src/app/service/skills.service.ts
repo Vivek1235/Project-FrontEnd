@@ -2,7 +2,6 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 import {skillModel} from "../model/skill.model";
 import {HttpClient} from "@angular/common/http";
 import {UserRegistrationService} from "./user-registration.service";
-import {JsonPipe} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from "@angular/forms";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {userModel} from "../model/user.model";
 import {UserRegistrationService} from "../service/user-registration.service";
 import {Router} from "@angular/router";
 import {NavbarService} from "../service/navbar.service";
-import {error} from "@angular/compiler/src/util";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -15,17 +14,25 @@ import {HttpClient} from "@angular/common/http";
 export class LoginComponent implements OnInit {
   user:userModel=new userModel(0,"","");
   message:any;
-  userMatch:userModel=new userModel(0,"","");
-
+  // @ts-ignore
+  loginForm:FormGroup;
   constructor(private  service:UserRegistrationService,private router:Router,private nav:NavbarService,private http:HttpClient) { }
 
   ngOnInit(): void {
     this.nav.hide();
+    this.loginForm=new FormGroup(
+      {
+        'email' : new FormControl(null,[Validators.required,Validators.email]),
+        'password' : new FormControl(null,Validators.required),
+
+      }
+    )
+
   }
-  onSubmit(form:NgForm)
+  onSubmit()
   {
 
-    const value=form.value;
+    const value=this.loginForm.value;
     this.user.email=value.email;
     this.user.password=value.password;
 
@@ -38,7 +45,7 @@ export class LoginComponent implements OnInit {
 
 
 
-    form.reset();
+    this.loginForm.reset();
 
 
   }

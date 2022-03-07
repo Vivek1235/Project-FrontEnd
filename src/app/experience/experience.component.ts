@@ -3,11 +3,8 @@ import {NavbarService} from "../service/navbar.service";
 import {ExperienceService} from "../service/experience.service";
 import {UserRegistrationService} from "../service/user-registration.service";
 import {ExperienceModel} from "../model/experience.model";
-import {SkillsAddComponent} from "../skills/skills-add/skills-add.component";
-import {ExperienceAddComponent} from "./experience-add/experience-add.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
-import {EducationModel} from "../model/education.model";
 
 @Component({
   selector: 'app-experience',

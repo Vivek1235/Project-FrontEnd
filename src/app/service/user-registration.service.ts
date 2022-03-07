@@ -1,7 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
 import {userModel} from "../model/user.model";
 import {HttpClient} from "@angular/common/http";
-import {ProfileModel} from "../model/profile.model";
 import {RegisterModel} from "../model/register.model";
 import {Router} from "@angular/router";
 
@@ -22,7 +21,6 @@ export class UserRegistrationService implements OnInit{
   }
   doRegister(user:RegisterModel)
   {
-    console.log(user);
     return this.http.post<boolean>("http://localhost:8080/register",user);
   }
   display()

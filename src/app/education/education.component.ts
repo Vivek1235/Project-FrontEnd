@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {NavbarService} from "../service/navbar.service";
-import {ExperienceModel} from "../model/experience.model";
-import {ExperienceService} from "../service/experience.service";
 import {UserRegistrationService} from "../service/user-registration.service";
 import {MatDialog} from "@angular/material/dialog";
 import {EducationModel} from "../model/education.model";

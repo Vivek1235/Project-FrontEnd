@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {userModel} from "./model/user.model";
 import {UserRegistrationService} from "./service/user-registration.service";
 import {Router} from "@angular/router";
@@ -12,7 +12,6 @@ import {Router} from "@angular/router";
 export class AppComponent implements OnInit{
 
 
-  allowAccess:boolean =false;
   title = 'project-app';
 
   user:userModel=new userModel(0,"","");
@@ -20,7 +19,13 @@ export class AppComponent implements OnInit{
   constructor(private service:UserRegistrationService,private router:Router) {
   }
   ngOnInit() {
-     // this.router.navigate(['login']);
+     if(this.service.getUser()!=null)
+     {
+       this.router.navigate(['/profile']);
+     }
+     else {
+       this.router.navigate(['/login']);
+     }
   }
 
 

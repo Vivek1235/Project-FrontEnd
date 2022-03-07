@@ -2,7 +2,6 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NavbarService} from "../service/navbar.service";
 import {HttpClient} from "@angular/common/http";
 import {UserRegistrationService} from "../service/user-registration.service";
-import {userModel} from "../model/user.model";
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,16 +13,14 @@ export class HeaderComponent implements OnInit {
 
   @Output() selectedLink = new EventEmitter<string>();
 
-  constructor(public nav: NavbarService, private http: HttpClient,private service:UserRegistrationService,private router:Router) {
+  constructor(public nav: NavbarService,) {
   }
 
   ngOnInit(): void {
 
   }
 
-  clickedLink(link: string) {
-    this.selectedLink.emit(link);
-  }
+
   deleteUser()
   {
 
